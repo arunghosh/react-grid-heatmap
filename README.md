@@ -16,7 +16,6 @@ npm install --save react-grid-heatmap
 import React, { Component } from 'react'
 
 import MyComponent from 'react-grid-heatmap'
-import 'react-grid-heatmap/dist/index.css'
 
 class Example extends Component {
   render() {
@@ -28,3 +27,9 @@ class Example extends Component {
 ## License
 
 MIT © [arunghosh](https://github.com/arunghosh)
+
+
+Started with Cell
+
+```
+```

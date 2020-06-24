@@ -1,7 +1,7 @@
-import { ExampleComponent } from '.'
+import { HeatMapGrid } from '.'
 
 describe('ExampleComponent', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
+    expect(HeatMapGrid).toBeTruthy()
   })
 })
