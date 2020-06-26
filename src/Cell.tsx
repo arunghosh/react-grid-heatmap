@@ -39,6 +39,7 @@ const Cell = ({
         flexShrink: 0,
         height: height,
         lineHeight: height,
+        borderRadius: "4px",
         background: `rgba(${[...background].join(',')}, ${ratio})`,
         ...style(posX, posY, ratio)
       }}
