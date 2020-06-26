@@ -10,7 +10,7 @@ export default function Row({ children, reverse=false }: Props): ReactElement<Pr
     <div
       style={{
         display: 'flex',
-        flexDirection: reverse ? 'row-reverse' : 'row'
+        flexDirection: reverse ? 'row-reverse' : 'row',
       }}
     >
       {children}

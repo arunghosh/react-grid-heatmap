@@ -8,7 +8,7 @@ const yLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri']
 const data = new Array(yLabels.length)
   .fill(0)
   .map(() =>
-    new Array(xLabels.length).fill(0).map(() => Math.floor(Math.random() * 100))
+    new Array(xLabels.length).fill(0).map(() => Math.floor(Math.random() * 50 + 50))
   )
 
 const App = () => {
@@ -40,6 +40,7 @@ const App = () => {
         })}
         cellHeight='2rem'
         xLabelsPos='bottom'
+        yLabelsPos='right'
         // square
       />
     </div>

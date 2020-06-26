@@ -13,6 +13,7 @@ interface Props {
   cellHeight?: string
   square?: boolean
   xLabelsPos?: 'top' | 'bottom'
+  yLabelsPos?: 'left' | 'right'
   xLabelsStyle?: (index: number) => {}
   yLabelsStyle?: (index: number) => {}
   cellStyle?: (x: number, y: number, ratio: number) => {}
@@ -23,11 +24,11 @@ interface ClientHeight {
   clientHeight: number
 }
 
-function getMinMaxDiff(data: number[][]): number {
+function getMinMax(data: number[][]): [number, number] {
   const flatArray = data.reduce((i, o) => [...o, ...i], [])
   const max = Math.max(...flatArray)
   const min = Math.min(...flatArray)
-  return max - min
+  return [min, max]
 }
 
 export const HeatMapGrid = ({
@@ -35,6 +36,7 @@ export const HeatMapGrid = ({
   xLabels,
   yLabels,
   xLabelsPos = 'top',
+  yLabelsPos = 'left',
   square = false,
   cellHeight = '2px',
   xLabelsStyle,
@@ -44,8 +46,12 @@ export const HeatMapGrid = ({
 }: Props) => {
   const [xLabelHeight, setXLabelHeight] = React.useState<number>(22)
   const xLabelRef = React.useRef(null)
-  const minMaxDiff = getMinMaxDiff(data)
+  const [min, max] = getMinMax(data)
+  const minMaxDiff = max - min
   const isXLabelReverse = xLabelsPos === 'bottom'
+  const isYLabelReverse = yLabelsPos === 'right'
+
+  console.log(minMaxDiff)
 
   // TODO: move to custom hook
   React.useEffect(() => {
@@ -56,12 +62,13 @@ export const HeatMapGrid = ({
   })
 
   return (
-    <Row>
+    <Row reverse={isYLabelReverse}>
       <YLabelAligner
         xLabelHeight={xLabelHeight}
         isXLabelReverse={isXLabelReverse}
       >
         <YLabels
+          reverse={isYLabelReverse}
           labels={yLabels}
           height={cellHeight}
           yLabelsStyle={yLabelsStyle}
@@ -89,7 +96,7 @@ export const HeatMapGrid = ({
                   square={square}
                   render={cellRender}
                   style={cellStyle}
-                  ratio={value / minMaxDiff}
+                  ratio={(value - min) / minMaxDiff}
                 />
               ))}
             </Row>
@@ -99,5 +106,3 @@ export const HeatMapGrid = ({
     </Row>
   )
 }
-
-export { Cell }

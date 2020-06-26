@@ -3,17 +3,23 @@ import React from 'react'
 interface Props {
   labels: string[]
   height: string
+  reverse?: boolean
   yLabelsStyle?: (index: number) => {}
 }
 
 export default function YLabels({
   labels,
   height,
-  yLabelsStyle = () => ({})
+  yLabelsStyle = () => ({}),
+  reverse = false
 }: Props) {
   return (
     <div
-      style={{ display: 'flex', flexDirection: 'column', textAlign: 'right' }}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        textAlign: reverse ? 'left' : 'right'
+      }}
     >
       {labels.map((label, index) => (
         <div
