@@ -5,6 +5,7 @@ import XLabels from './XLabels'
 import Column from './Column'
 import YLabels from './YLabels'
 import YLabelAligner from './YLabelAligner'
+import useElemetHeight from './useElemetHeight'
 
 interface Props {
   data: number[][]
@@ -18,10 +19,6 @@ interface Props {
   yLabelsStyle?: (index: number) => {}
   cellStyle?: (x: number, y: number, ratio: number) => {}
   cellRender?: (x: number, y: number, ratio: number) => {}
-}
-
-interface ClientHeight {
-  clientHeight: number
 }
 
 function getMinMax(data: number[][]): [number, number] {
@@ -44,20 +41,11 @@ export const HeatMapGrid = ({
   cellStyle,
   cellRender
 }: Props) => {
-  const [xLabelHeight, setXLabelHeight] = React.useState<number>(22)
-  const xLabelRef = React.useRef(null)
+  const [xLabelHeight, xLabelRef] = useElemetHeight(22)
   const [min, max] = getMinMax(data)
   const minMaxDiff = max - min
   const isXLabelReverse = xLabelsPos === 'bottom'
   const isYLabelReverse = yLabelsPos === 'right'
-
-  // TODO: move to custom hook
-  React.useEffect(() => {
-    if (xLabelRef.current) {
-      const height = ((xLabelRef.current || {}) as ClientHeight).clientHeight
-      setXLabelHeight(height)
-    }
-  })
 
   return (
     <Row reverse={isYLabelReverse}>
