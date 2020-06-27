@@ -7,9 +7,9 @@ import YLabels from './YLabels'
 import YLabelAligner from './YLabelAligner'
 
 interface Props {
-  xLabels: string[]
-  yLabels: string[]
   data: number[][]
+  xLabels?: string[]
+  yLabels?: string[]
   cellHeight?: string
   square?: boolean
   xLabelsPos?: 'top' | 'bottom'
@@ -51,8 +51,6 @@ export const HeatMapGrid = ({
   const isXLabelReverse = xLabelsPos === 'bottom'
   const isYLabelReverse = yLabelsPos === 'right'
 
-  console.log(minMaxDiff)
-
   // TODO: move to custom hook
   React.useEffect(() => {
     if (xLabelRef.current) {
@@ -63,25 +61,29 @@ export const HeatMapGrid = ({
 
   return (
     <Row reverse={isYLabelReverse}>
-      <YLabelAligner
-        xLabelHeight={xLabelHeight}
-        isXLabelReverse={isXLabelReverse}
-      >
-        <YLabels
-          reverse={isYLabelReverse}
-          labels={yLabels}
-          height={cellHeight}
-          yLabelsStyle={yLabelsStyle}
-        />
-      </YLabelAligner>
+      {yLabels && (
+        <YLabelAligner
+          xLabelHeight={xLabelHeight}
+          isXLabelReverse={isXLabelReverse}
+        >
+          <YLabels
+            reverse={isYLabelReverse}
+            labels={yLabels}
+            height={cellHeight}
+            yLabelsStyle={yLabelsStyle}
+          />
+        </YLabelAligner>
+      )}
       <Column reverse={isXLabelReverse}>
         <div ref={xLabelRef}>
-          <XLabels
-            labels={xLabels}
-            xLabelsStyle={xLabelsStyle}
-            height={cellHeight}
-            square={square}
-          />
+          {xLabels && (
+            <XLabels
+              labels={xLabels}
+              xLabelsStyle={xLabelsStyle}
+              height={cellHeight}
+              square={square}
+            />
+          )}
         </div>
         <Column>
           {data.map((rowItems, xi) => (
