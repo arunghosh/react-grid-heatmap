@@ -1,3 +1,6 @@
+
+#Work in Progress
+
 # react-grid-heatmap
 
 > A react component for heatmap visualisation in grid layout
