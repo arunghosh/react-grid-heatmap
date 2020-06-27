@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface Props {
-  render?: (x: number, y: number, ratio: number) => ({})
+  render?: (x: number, y: number, ratio: number) => {}
   posX: number
   posY: number
   style?: (x: number, y: number, ratio: number) => {}
@@ -9,14 +9,12 @@ interface Props {
   value: number
   height?: string
   square?: boolean
-  background?: [number, number, number]
 }
 
 const noop = (returnVal: any) => () => returnVal
 
 const Cell = ({
   render = noop(null),
-  background = [0, 151, 230],
   style = noop({}),
   ratio,
   posX,
@@ -39,8 +37,9 @@ const Cell = ({
         flexShrink: 0,
         height: height,
         lineHeight: height,
-        borderRadius: "4px",
-        background: `rgba(${[...background].join(',')}, ${ratio})`,
+        borderRadius: '4px',
+        fontSize: '.8rem',
+        background: `rgb(12, 160, 44, ${ratio + 0.05})`,
         ...style(posX, posY, ratio)
       }}
     >
