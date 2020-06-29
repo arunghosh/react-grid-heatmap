@@ -9,6 +9,7 @@ interface Props {
   value: number
   height?: string
   square?: boolean
+  onClick?: (x: number, y: number) => void
 }
 
 const noop = (returnVal: any) => () => returnVal
@@ -21,10 +22,12 @@ const Cell = ({
   posY,
   square = false,
   height = '2rem',
-  value
+  value,
+  onClick
 }: Props) => {
   return (
     <div
+      onClick={() => (onClick || noop({}))(posX, posY)}
       style={{
         border: '1px solid #fff',
         borderWidth: '1px 1px 0 0',
@@ -39,6 +42,7 @@ const Cell = ({
         lineHeight: height,
         borderRadius: '4px',
         fontSize: '.8rem',
+        cursor: onClick ? "pointer": "initial",
         background: `rgb(12, 160, 44, ${ratio + 0.05})`,
         ...style(posX, posY, ratio)
       }}

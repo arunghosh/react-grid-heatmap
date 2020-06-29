@@ -1,16 +1,16 @@
 import React from 'react'
 import '@testing-library/jest-dom'
-import { screen, render } from '@testing-library/react'
+import { screen, render, fireEvent } from '@testing-library/react'
 import { HeatMapGrid } from '.'
 
-const xLabels = new Array(24).fill(0).map((_, i) => `${i}`)
+const xLabels = new Array(10).fill(0).map((_, i) => `${i}Hr`)
 const yLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri']
 const data = new Array(yLabels.length)
   .fill(0)
   .map(() =>
     new Array(xLabels.length)
       .fill(0)
-      .map(() => Math.floor(Math.random() * 50 + 50))
+      .map(() => Math.floor(Math.random() * Math.random() * 200))
   )
 
 describe('HeatMapGrid', () => {
@@ -19,13 +19,35 @@ describe('HeatMapGrid', () => {
   })
 
   it('should render with only its madatory attributes and Y-axis labels', () => {
+    render(<HeatMapGrid data={data} yLabels={yLabels} />)
+    expect(screen.getByText('Sun')).toBeInTheDocument()
+  })
+
+  it('should handle onclick without any error even if onclick is not provided', () => {
     render(
       <HeatMapGrid
         data={data}
+        cellRender={(_x, _y, value) => <div>{value}</div>}
         yLabels={yLabels}
       />
     )
-    expect(screen.getByText('Sun')).toBeInTheDocument()
+    expect(screen.getAllByText(data[0][0].toString())[0]).toBeInTheDocument()
+    fireEvent.click(screen.getAllByText(data[0][0].toString())[0])
+  })
+
+  it('should invoke onclick callback when user clicks on a cell', () => {
+    const onClick = jest.fn();
+    render(
+      <HeatMapGrid
+        data={data}
+        onClick={onClick}
+        cellRender={(_x, _y, value) => <div>{value}</div>}
+        yLabels={yLabels}
+      />
+    )
+    expect(screen.getAllByText(data[0][0].toString())[0]).toBeInTheDocument()
+    fireEvent.click(screen.getAllByText(data[0][0].toString())[0])
+    expect(onClick).toHaveBeenCalledTimes(1)
   })
 
   it('should render with all its optional attributes', () => {

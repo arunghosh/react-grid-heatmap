@@ -18,7 +18,8 @@ interface Props {
   xLabelsStyle?: (index: number) => {}
   yLabelsStyle?: (index: number) => {}
   cellStyle?: (x: number, y: number, ratio: number) => {}
-  cellRender?: (x: number, y: number, ratio: number) => {}
+  cellRender?: (x: number, y: number, value: number) => {}
+  onClick?: (x: number, y: number) => void
 }
 
 function getMinMax(data: number[][]): [number, number] {
@@ -39,7 +40,8 @@ export const HeatMapGrid = ({
   xLabelsStyle,
   yLabelsStyle,
   cellStyle,
-  cellRender
+  cellRender,
+  onClick
 }: Props) => {
   const [xLabelHeight, xLabelRef] = useElemetHeight(22)
   const [min, max] = getMinMax(data)
@@ -81,6 +83,7 @@ export const HeatMapGrid = ({
                   key={`${xi}-${yi}`}
                   posX={xi}
                   posY={yi}
+                  onClick={onClick}
                   value={value}
                   height={cellHeight}
                   square={square}

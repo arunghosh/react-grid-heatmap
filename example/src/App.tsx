@@ -1,7 +1,5 @@
 import React from 'react'
-
 import { HeatMapGrid } from 'react-grid-heatmap'
-import 'react-grid-heatmap/dist/index.css'
 
 const xLabels = new Array(24).fill(0).map((_, i) => `${i}`)
 const yLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri']
@@ -40,8 +38,9 @@ const App = () => {
         })}
         cellHeight='2rem'
         xLabelsPos='bottom'
-        yLabelsPos='right'
-        // square
+        onClick={(x, y) => alert(`Clicked (${x}, ${y})`)}
+        // yLabelsPos='right'
+        square
       />
     </div>
   )
