@@ -23,7 +23,7 @@ export default function XLabels({
             padding: '0.2rem 0',
             boxSizing: 'border-box',
             flexGrow: square ? 'initial' : 1,
-            overflow: "hidden",
+            overflow: 'hidden',
             flexShrink: 1,
             flexBasis: square ? height : widthPercent,
             width: square ? height : widthPercent,

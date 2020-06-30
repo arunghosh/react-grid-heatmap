@@ -42,7 +42,7 @@ const Cell = ({
         lineHeight: height,
         borderRadius: '4px',
         fontSize: '.8rem',
-        cursor: onClick ? "pointer": "initial",
+        cursor: onClick ? 'pointer' : 'initial',
         background: `rgb(12, 160, 44, ${ratio + 0.05})`,
         ...style(posX, posY, ratio)
       }}

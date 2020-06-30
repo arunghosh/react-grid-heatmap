@@ -6,14 +6,18 @@ const yLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri']
 const data = new Array(yLabels.length)
   .fill(0)
   .map(() =>
-    new Array(xLabels.length).fill(0).map(() => Math.floor(Math.random() * 50 + 50))
+    new Array(xLabels.length)
+      .fill(0)
+      .map(() => Math.floor(Math.random() * 50 + 50))
   )
 
 const App = () => {
   return (
-    <div style={{
-      width: "100%"
-    }}>
+    <div
+      style={{
+        width: '100%'
+      }}
+    >
       <HeatMapGrid
         data={data}
         xLabels={xLabels}
@@ -31,7 +35,7 @@ const App = () => {
           textTransform: 'uppercase',
           color: '#777'
         })}
-        cellStyle={(_, __, ratio) => ({
+        cellStyle={(_x, _y, ratio) => ({
           background: `rgb(12, 160, 44, ${ratio})`,
           fontSize: '.8rem',
           color: `rgb(0, 0, 0, ${ratio / 2 + 0.4})`
@@ -39,7 +43,7 @@ const App = () => {
         cellHeight='2rem'
         xLabelsPos='bottom'
         onClick={(x, y) => alert(`Clicked (${x}, ${y})`)}
-        // yLabelsPos='right'
+        yLabelsPos='right'
         square
       />
     </div>

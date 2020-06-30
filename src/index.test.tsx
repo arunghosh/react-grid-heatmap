@@ -36,7 +36,7 @@ describe('HeatMapGrid', () => {
   })
 
   it('should invoke onclick callback when user clicks on a cell', () => {
-    const onClick = jest.fn();
+    const onClick = jest.fn()
     render(
       <HeatMapGrid
         data={data}
