@@ -1,11 +1,11 @@
 
 # react-grid-heatmap
 
+> A React component to visualize heatmap in a grid layout without using any 3rd party libraries.
+
 [Demo - Try in Sandbox](https://codesandbox.io/s/react-grid-heatmap-hhmqw?file=/src/App.js)
 
 ![Screenshot](https://raw.githubusercontent.com/arunghosh/react-grid-heatmap/master/example/screenshot.png)
-
-> A react component for heatmap visualisation in grid layout
 
 [![NPM](https://img.shields.io/npm/v/react-grid-heatmap.svg)](https://www.npmjs.com/package/react-grid-heatmap) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -53,7 +53,7 @@ export default App
 **Optional Parameters**
 
 | Name         | Type     | Description/Example                                     | Default Value |
-| ------------ | -------- | ------------------------------------------------------- | ------------- |
+| :----------- | :------- | :------------------------------------------------------ | :------------ |
 | xLabels      | string[] | `['1am', '2am', '3am']`                                 | `null`        |
 | yLabels      | string[] | `['Sun', 'Mon']`                                        | `null`        |
 | cellHeight   | string   | Height of each cell of the heatmap                      | `"2rem"`      |
