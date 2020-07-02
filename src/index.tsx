@@ -64,7 +64,7 @@ export const HeatMapGrid = ({
           />
         </YLabelAligner>
       )}
-      <Column reverse={isXLabelReverse}>
+      <Column reverse={isXLabelReverse} grow={!square}>
         <div ref={xLabelRef}>
           {xLabels && (
             <XLabels

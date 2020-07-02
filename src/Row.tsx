@@ -10,7 +10,8 @@ export default function Row({ children, reverse = false }: Props) {
     <div
       style={{
         display: 'flex',
-        flexDirection: reverse ? 'row-reverse' : 'row'
+        flexDirection: reverse ? 'row-reverse' : 'row',
+        justifyContent: reverse ? 'flex-end' : 'initial'
       }}
     >
       {children}
