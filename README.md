@@ -1,6 +1,8 @@
 
 # react-grid-heatmap
 
+[Demo - Try in Sandbox](https://codesandbox.io/s/react-grid-heatmap-hhmqw?file=/src/App.js)
+
 ![Screenshot](https://raw.githubusercontent.com/arunghosh/react-grid-heatmap/master/example/screenshot.png)
 
 > A react component for heatmap visualisation in grid layout
