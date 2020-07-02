@@ -13,17 +13,25 @@ const data = new Array(yLabels.length)
       .map(() => Math.floor(Math.random() * Math.random() * 200))
   )
 
-describe('HeatMapGrid', () => {
-  it('is truthy', () => {
-    expect(HeatMapGrid).toBeTruthy()
+describe('The HeatMapGrid component', () => {
+  it('should render if madatory attribute data is provided', () => {
+    render(<HeatMapGrid data={data} />)
   })
 
-  it('should render with only its madatory attributes and Y-axis labels', () => {
-    render(<HeatMapGrid data={data} yLabels={yLabels} />)
+  it('should render properly with labels provided', () => {
+    render(
+      <HeatMapGrid
+        data={data}
+        yLabels={yLabels}
+        cellRender={(_x, _y, value) => <div>{value}</div>}
+        xLabels={xLabels}
+      />
+    )
     expect(screen.getByText('Sun')).toBeInTheDocument()
+    expect(screen.getAllByText(data[0][0].toString())[0]).toBeInTheDocument()
   })
 
-  it('should handle onclick without any error even if onclick is not provided', () => {
+  it('should not throw any exception when user clicks on the cell with onClick callback not provided', () => {
     render(
       <HeatMapGrid
         data={data}
@@ -35,7 +43,7 @@ describe('HeatMapGrid', () => {
     fireEvent.click(screen.getAllByText(data[0][0].toString())[0])
   })
 
-  it('should invoke onclick callback when user clicks on a cell', () => {
+  it('should invoke onClick callback when user clicks on a cell', () => {
     const onClick = jest.fn()
     render(
       <HeatMapGrid
@@ -50,7 +58,7 @@ describe('HeatMapGrid', () => {
     expect(onClick).toHaveBeenCalledTimes(1)
   })
 
-  it('should render with all its optional attributes', () => {
+  it('should render properly with all its attributes provided', () => {
     render(
       <HeatMapGrid
         data={data}
