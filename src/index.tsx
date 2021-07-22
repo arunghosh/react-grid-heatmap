@@ -1,11 +1,11 @@
 import * as React from 'react'
-import Cell from './Cell'
-import Row from './Row'
-import XLabels from './XLabels'
-import Column from './Column'
-import YLabels from './YLabels'
-import YLabelAligner from './YLabelAligner'
-import useElemetHeight from './useElemetHeight'
+import Cell from './components/Cell'
+import Row from './components/Row'
+import XLabels from './components/XLabels'
+import Column from './components/Column'
+import YLabels from './components/YLabels'
+import YLabelAligner from './components/YLabelAligner'
+import useElemetHeight from './hooks/useElemetHeight'
 
 interface Props {
   data: number[][]

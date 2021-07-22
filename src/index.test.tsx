@@ -1,7 +1,7 @@
 import React from 'react'
 import '@testing-library/jest-dom'
 import { screen, render, fireEvent } from '@testing-library/react'
-import { HeatMapGrid } from '.'
+import { HeatMapGrid } from './'
 
 const xLabels = new Array(10).fill(0).map((_, i) => `${i}Hr`)
 const yLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri']

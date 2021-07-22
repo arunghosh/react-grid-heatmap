@@ -125,6 +125,13 @@ export default App
 
 ```
 
+# Development
+To run the development server:
+```
+cd example
+yarn start
+```
+
 ## License
 
 MIT © [arunghosh](https://github.com/arunghosh)
