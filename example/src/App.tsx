@@ -1,4 +1,3 @@
-import React from 'react'
 import { HeatMapGrid } from 'react-grid-heatmap'
 
 const xLabels = new Array(24).fill(0).map((_, i) => `${i}`)
