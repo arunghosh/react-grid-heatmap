@@ -5,7 +5,7 @@ import XLabels from './XLabels'
 import Column from './Column'
 import YLabels from './YLabels'
 import YLabelAligner from './YLabelAligner'
-import useElemetHeight from './useElemetHeight'
+import useElementHeight from './useElementHeight'
 
 export interface HeatMapGridProps {
   data: number[][]
@@ -43,7 +43,7 @@ export const HeatMapGrid = ({
   cellRender,
   onClick
 }: HeatMapGridProps) => {
-  const [xLabelHeight, xLabelRef] = useElemetHeight(22)
+  const [xLabelHeight, xLabelRef] = useElementHeight(22)
   const [min, max] = getMinMax(data)
   const minMaxDiff = max - min
   const isXLabelReverse = xLabelsPos === 'bottom'

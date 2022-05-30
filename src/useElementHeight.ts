@@ -4,7 +4,7 @@ interface ClientHeight {
   clientHeight: number
 }
 
-export default function useElemetHeight(
+export default function useElementHeight(
   initHeight: number
 ): [number, React.MutableRefObject<any>] {
   const eleRef = React.useRef(null)
