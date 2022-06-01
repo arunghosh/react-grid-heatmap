@@ -18,7 +18,7 @@ export default function XLabels({
     <div style={{ display: 'flex', textAlign: 'center' }}>
       {labels.map((label, index) => (
         <div
-          key={label}
+          key={`${label}-${index}`}
           style={{
             padding: '0.2rem 0',
             boxSizing: 'border-box',
